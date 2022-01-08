@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  node:
+    container_name: 'node-local'
+    stdin_open: true
+    tty: true
+    image: node:16.13.1
+    working_dir: /home/pavel/Desktop/php_dima
+    user: node
+    volumes:
+      - ./:/home/pavel/Desktop/php_dima
+      - node_modules:/home/pavel/Desktop/php_dima/node_modules
+    command: tail -f /dev/null
+    ports:
+      - 9499:9499
+#    restart: unless-stopped
+    networks:
+      - node-net
+
+networks:
+    node-net:
+      driver: bridge
+
+volumes:
+  node_modules:
