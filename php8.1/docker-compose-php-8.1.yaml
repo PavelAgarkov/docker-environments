@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  php:
+    container_name: php81
+    build: .
+    stdin_open: true
+    tty: true
+    command: tail -f /dev/null
+    volumes:
+      - ./:/var/www/custom
+    networks:
+      - php-net
+
+networks:
+  php-net:
+    driver: bridge
